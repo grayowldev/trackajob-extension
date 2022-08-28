@@ -1,0 +1,7 @@
+{
+  "manifest_version": 3,
+  "name": "TrackaJob",
+  "version": "1",
+  "default_locale": "en",
+  "description": "A plain text description"
+}
