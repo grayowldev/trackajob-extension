@@ -23,7 +23,13 @@ chrome.action.onClicked.addListener((tab) => {
             const endpoint = "http://localhost:7000/job/" 
             console.log(endpoint);
 
-            fetch(endpoint).then((res) => {
+            fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(msg.payload)
+                }).then((res) => {
                 if (res.status !== 200) {
                     response({
                         message: "Error",

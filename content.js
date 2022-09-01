@@ -18,6 +18,7 @@
         const link = ""
         const jobOrigin = ""
         const jobId = ""
+        const companyId = ""
         const companyImage = document.getElementsByClassName("ember-view link-without-hover-state inline-block")[0].innerHTML
 
         const exp = title[0];
@@ -45,18 +46,22 @@
         console.log(url);
         return url
      }
-     
-     const job = getJobData()
-     job.title = job.title.textContent
-     console.log(job);
 
-     chrome.runtime.sendMessage({
-        req: "addJob",
-        payload: job,
-    }, (response) => {
+     const postReq = (req,payload) => {
+         chrome.runtime.sendMessage({
+            req: req,
+            payload: payload,
+         }, (response) => {
         console.log(response.message)
         if ( response.message == "Success"){
             console.log(response.payload);
         }
      })
+     }
+     
+     const job = getJobData()
+     job.title = job.title.textContent
+     console.log(job);
+
+     
 })();
